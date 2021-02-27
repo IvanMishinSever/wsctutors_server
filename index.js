@@ -1,17 +1,20 @@
+
 const express = require('express');
 const app = express();
-
-const PORT = process.env.PORT || 4001;
-
+const config = require('config');
 
 
-
+const PORT = config.get('serverPort');
 
 
 
 
 
 
-app.listen = (PORT, () => {
+
+
+
+
+app.listen(PORT, () => {
     console.log(`LAUNCH SERVER! on port ${PORT}`);
-}) 
+})
