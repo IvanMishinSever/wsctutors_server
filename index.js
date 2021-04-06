@@ -6,8 +6,25 @@ const config = require('config');
 
 const PORT = config.get('serverPort');
 
-app.use(express.static('./public'));
+//app.use(express.static('./public'));
+//SOLVE PROBLEM FETCH FAILED
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "OPTIONS, GET, POST, PUT, PATCH, DELETE" // what matters here is that OPTIONS is present
+    );
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+  });
+//get all users
+const usersRouter = require('./quires/users.js');
+app.use('/api/users', usersRouter);
 
+//check server
+app.get('/',(req,res,next) => {
+    res.send(body: 'hiiii!');
+}
 //START SERVER
 const start = () => {
     try {
