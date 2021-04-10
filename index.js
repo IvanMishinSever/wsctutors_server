@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const quizRouter = require('./routes/quiz_routes');
 const config = require('config');
 
 
@@ -18,13 +19,18 @@ app.use((req, res, next) => {
     next();
   });
 //get all users
+
 const usersRouter = require('./quires/users.js');
 app.use('/api/users', usersRouter);
 
+app.use(express.json());
+app.use('/api/quizes',quizRouter);
 //check server
+/*
 app.get('/',(req,res,next) => {
-    res.send(body: 'hiiii!');
-}
+    res.send( 'server get work!');
+});
+*/
 //START SERVER
 const start = () => {
     try {
