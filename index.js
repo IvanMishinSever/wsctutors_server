@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const quizRouter = require('./routes/quiz_routes');
+const usersRouter = require('./routes/users_routes');
 const config = require('config');
 
 
@@ -19,12 +20,13 @@ app.use((req, res, next) => {
     next();
   });
 //get all users
-
+/*
 const usersRouter = require('./quires/users.js');
 app.use('/api/users', usersRouter);
-
+*/
 app.use(express.json());
 app.use('/api/quizes',quizRouter);
+app.use('/api/users',usersRouter);
 //check server
 /*
 app.get('/',(req,res,next) => {

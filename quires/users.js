@@ -9,6 +9,7 @@ const jsonParser = express.json();
 
 
 //get all users
+
 usersRouter.get('/', (req, res, next) => {
     console.log('ок');
   
@@ -24,5 +25,5 @@ usersRouter.get('/', (req, res, next) => {
 
 
 
-module.exports = usersRouter;
+//module.exports = usersRouter;
 //module.exports = usersRouterId;
