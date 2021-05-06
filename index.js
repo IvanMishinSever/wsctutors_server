@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const quizRouter = require('./routes/quiz_routes');
 const usersRouter = require('./routes/users_routes');
+const categoryRouter = require('./routes/category_routes');
 const config = require('config');
 
 
@@ -27,6 +28,7 @@ app.use('/api/users', usersRouter);
 app.use(express.json());
 app.use('/api/quizes',quizRouter);
 app.use('/api/users',usersRouter);
+app.use('/api/category',categoryRouter);
 //check server
 /*
 app.get('/',(req,res,next) => {
