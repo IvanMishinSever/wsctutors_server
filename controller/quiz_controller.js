@@ -21,7 +21,11 @@ class Quiz_controllers {
     async getQuizes(req,res) {
         try{
         console.log('async getQ work');
-        const quizes = await pool.query('SELECT * FROM quizes');
+        const quizes = await pool.query(`
+        SELECT quiz_id AS id,
+        quiz_name AS label,
+        sub_id AS id_category
+        FROM quizes`);
         res.json(quizes.rows);
         } catch (e) {
             console.log(e, "ERROR--")
