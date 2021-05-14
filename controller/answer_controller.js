@@ -25,7 +25,8 @@ class Answer_controllers {
         SELECT answer_id AS id,
         answer_content AS text,
         answer_feedback AS feedback,
-        answer_value AS value
+        answer_value AS value,
+        question_id
         FROM answers_item`);
         res.json(answer.rows);
         } catch (e) {
