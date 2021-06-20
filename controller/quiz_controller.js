@@ -49,7 +49,8 @@ class Quiz_controllers {
 
 }
 
-module.exports = new Quiz_controllers();
+//module.exports = new Quiz_controllers();
+
 /*
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {

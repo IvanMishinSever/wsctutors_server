@@ -2,12 +2,12 @@
 //const router = new Router();
 const express = require('express');
 
-const questionControllers = require('../controller/question_controller.js');
+const questionIdControllers = require('../controller/question_id_controller.js');
 
 //router.get = ('/',quizControllers.getQuizes);
 
-const questionRouter = express.Router();
+const questionIdRouter = express.Router();
 
-questionRouter.get('/',questionControllers.getQuestion);
+questionIdRouter.get('/:id',questionIdControllers.getIdQuestion);
 
-module.exports = questionRouter;
+module.exports = questionIdRouter;

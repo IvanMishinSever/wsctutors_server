@@ -15,9 +15,8 @@ const pool = new Pool({
     }
 });
 
+class User_controllers {
 
-class Users_controllers {
-   
     async getUsers(req,res) {
         try{
         console.log('async getQ work');
@@ -33,42 +32,11 @@ class Users_controllers {
             console.log(e, "ERROR--")
         }
     }
-    /*
-     getQuizes(req,res) {
-        console.log(pool);
-        console.log(' getQ work');
-        const quizes =  pool.query('SELECT * FROM quizes',(error, results) => {
-            if (error) {
-              throw error
-            }
-            res.status(200).json(results)
-          });
-        res.json(quizes);
-        
-    }
-*/
-
 
 }
 
 
 
 
-//OPEN FOR USE
-//module.exports = new Users_controllers();
 
-
-
-
-
-
-/*
-const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
-  }
-  */
+module.exports = new User_controllers();
