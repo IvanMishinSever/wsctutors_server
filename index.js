@@ -2,6 +2,8 @@
 const express = require('express');
 const app = express();
 const quizRouter = require('./routes/quiz_routes');
+const quizIdRouter = require('./routes/quiz_id_routes')
+
 const usersRouter = require('./routes/users_routes');
 const categoryRouter = require('./routes/category_routes');
 
@@ -38,6 +40,7 @@ app.use('/api/users', usersRouter);
 //QUIZES
 app.use(express.json());
 app.use('/api/quizes',quizRouter);
+app.use('/api/quizes/',quizIdRouter);
 
 app.use('/api/category',categoryRouter);
 

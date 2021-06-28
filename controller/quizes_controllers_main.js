@@ -104,6 +104,26 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    async getIdQuizes(req,res) {
+        try{
+            let id = req.params.id;
+            console.log(id);
+        console.log('async getQ work');
+        
+        const answer = await pool.query(`
+        SELECT quiz_id AS id,
+        quiz_name AS text
+        FROM quizes
+        WHERE sub_id =  $1
+        `,[id]);
+        
+      
+        res.json(answer.rows);
+
+        } catch (e) {
+            console.log(e, "ERROR--")
+        }
+    }
     async getQuizes(req,res) {
         try{
         console.log('async getQ work');
