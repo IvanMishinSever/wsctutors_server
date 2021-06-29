@@ -16,7 +16,7 @@ const pool = new Pool({
 });
 
 class Quiz_controllers {
-
+    //quizSlice
     async getAnswer(req,res) {
         try{
         console.log('async getQ work');
@@ -55,6 +55,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    // adminSlice
     async getUsers(req,res) {
         try{
         console.log('async getQ work');
@@ -70,6 +71,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //menuSideSlice
     async getSubCategory(req,res) {
         try{
         console.log('async getSubCategory work');
@@ -84,6 +86,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //adminSlice
     async getIdSubCategory(req,res) {
         try{
             let id = req.params.id;
@@ -104,6 +107,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //adminSlice
     async getIdQuizes(req,res) {
         try{
             let id = req.params.id;
@@ -124,6 +128,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //menuSideSlice
     async getQuizes(req,res) {
         try{
         console.log('async getQ work');
@@ -137,6 +142,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //quizSlice   adminSlice
     async getIdQuestion(req,res) {
         try{
             let id = req.params.id;
@@ -154,6 +160,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //menuSideSlice  adminSlice
     async getCategory(req,res) {
         try{
         console.log('async getCategory work');
