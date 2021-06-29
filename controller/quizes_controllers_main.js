@@ -144,7 +144,7 @@ class Quiz_controllers {
         console.log('async getQ work');
         const question = await pool.query(`
         SELECT question_id AS id,
-        question_content AS question_text,
+        question_content AS text,
         quiz_id 
         FROM question_item
         WHERE quiz_id =  $1
