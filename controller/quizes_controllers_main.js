@@ -16,7 +16,7 @@ const pool = new Pool({
 });
 
 class Quiz_controllers {
-    //quizSlice
+    //quizSlice NEVER USE NOW
     async getAnswer(req,res) {
         try{
         console.log('async getQ work');
@@ -32,7 +32,8 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
-    async getIdAnswer(req,res) {
+    //quizSlice
+    async getIdAnswerForQuiz(req,res) {
         try{
             let id = req.params.id;
             console.log(id);
@@ -55,6 +56,30 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+        //adminSlice
+        async getIdAnswerForQuestion(req,res) {
+            try{
+                let id = req.params.id;
+                console.log(id);
+            console.log('async getQ work');
+            
+            const answer = await pool.query(`
+            SELECT answer_id AS id,
+            answer_content AS text,
+            answer_feedback AS feedback,
+            answer_value AS value,
+            question_id
+            FROM answers_item
+            WHERE question_id =  $1
+            `,[id]);
+            
+            //const answer = await pool.query('SELECT * FROM answers_item');
+    
+            res.json(answer.rows);
+            } catch (e) {
+                console.log(e, "ERROR--")
+            }
+        }
     // adminSlice
     async getUsers(req,res) {
         try{

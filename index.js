@@ -14,6 +14,7 @@ const questionRouter = require('./routes/question_routes');
 const answerRouter = require('./routes/answer_routes');
 
 const answerIdRouter = require('./routes/answer_id_routes');
+const answerIdForQuestionRouter = require('./routes/answerForQuestion_id_routes');
 const questionIdRouter = require('./routes/question_id_routes');
 
 const config = require('config');
@@ -51,6 +52,7 @@ app.use('/api/question',questionRouter);
 app.use('/api/answer',answerRouter);
 
 app.use('/api/answer/',answerIdRouter);
+app.use('/api/answerforquestion/',answerIdForQuestionRouter);
 app.use('/api/question',questionIdRouter);
 
 //USERS

@@ -20,6 +20,6 @@ const answerIdControllers = require('../controller/quizes_controllers_main.js');
 
 const answerIdRouter = express.Router();
 
-answerIdRouter.get('/:id',answerIdControllers.getIdAnswerForQuiz);
+answerIdRouter.get('/:id',answerIdControllers.getIdAnswerForQuestion);
 
 module.exports = answerIdRouter;
