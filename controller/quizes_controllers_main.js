@@ -56,8 +56,32 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+    //
+    async updateAnswerForQuiz(req, res) {
+        const {answer_id, answer_content} = req.body;
+        
+        try{
+            console.log(req.body);
+            console.log('async PUTQ work');
+            
+            const answer = await pool.query (`
+            UPDATE answers_item
+            SET  answer_content = $1
+            WHERE answer_id = $2  RETURNING *                 
+            `, [answer_content, answer_id]);
+            res.json(answer.rows);
+            
+            
+            
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+
+    //
+    async deleteAnswerForQuiz(req, res) {
+        
+    }
         //adminSlice
-        async getIdAnswerForQuestion(req,res) {
+    async getIdAnswerForQuestion(req,res) {
             try{
                 let id = req.params.id;
                 console.log(id);
@@ -199,6 +223,7 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
+
 
 }
 

@@ -14,9 +14,14 @@ const questionRouter = require('./routes/question_routes');
 const answerRouter = require('./routes/answer_routes');
 
 const answerIdRouter = require('./routes/answer_id_routes');
+const answerIdRouterUpdate = require('./routes/answer_id_routes_update');
 const answerIdForQuestionRouter = require('./routes/answerForQuestion_id_routes');
 const questionIdRouter = require('./routes/question_id_routes');
-
+/*
+const answerIdControllers = require('./controller/quizes_controllers_main');
+const answerIdRouterUpdate = express.Router();
+answerIdRouterUpdate.put('/api/answerupdate/',answerIdControllers.updateAnswerForQuiz);
+*/
 const config = require('config');
 
 
@@ -50,6 +55,15 @@ app.use('/api/subcategory/',subcategoryIdRouter);
 
 app.use('/api/question',questionRouter);
 app.use('/api/answer',answerRouter);
+
+app.use('/api/answerupdate/',answerIdRouterUpdate)
+/*
+app.put('/api/answerupdate/:id',(req, res, next) => {
+    const answers = req.body;
+    console.log(answers);
+    res.send("jr");
+})
+*/
 
 app.use('/api/answer/',answerIdRouter);
 app.use('/api/answerforquestion/',answerIdForQuestionRouter);
