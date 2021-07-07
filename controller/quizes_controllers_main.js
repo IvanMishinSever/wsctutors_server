@@ -56,9 +56,9 @@ class Quiz_controllers {
             console.log(e, "ERROR--")
         }
     }
-    //
+    //adminSlice
     async updateAnswerForQuiz(req, res) {
-        const {answer_id, answer_content} = req.body;
+        const {answer_id, answer_content, answer_value, answer_feedback} = req.body;
         
         try{
             console.log(req.body);
@@ -66,17 +66,80 @@ class Quiz_controllers {
             
             const answer = await pool.query (`
             UPDATE answers_item
-            SET  answer_content = $1
-            WHERE answer_id = $2  RETURNING *                 
-            `, [answer_content, answer_id]);
+            SET  answer_content = $1,
+            answer_value = $2, answer_feedback = $3
+            WHERE answer_id = $4  RETURNING *                 
+            `, [answer_content, answer_value, answer_feedback, answer_id]);
             res.json(answer.rows);
-            
-            
-            
         } catch(e) {console.log(e, "ERROR--")}
     }
-
+    //adminSlice
+    async updateQuestionForQuiz(req, res) {
+        const {question_id, question_content} = req.body;
+        
+        try{
+            console.log(req.body);
+            console.log('async PUTQuestion work');
+            
+            const question = await pool.query (`
+            UPDATE question_item
+            SET  question_content = $1
+            WHERE question_id = $2  RETURNING *                 
+            `, [question_content, question_id]);
+            res.json(question.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+        //adminSlice
+        async updateQuizForQuiz(req, res) {
+            const {quiz_id, quiz_name, quiz_description} = req.body;
+            
+            try{
+                console.log(req.body);
+                console.log('async PUTQuiz work');
+                
+                const quiz = await pool.query (`
+                UPDATE quizes
+                SET  quiz_name = $1,
+                quiz_description = $2
+                WHERE quiz_id = $3  RETURNING *                 
+                `, [quiz_name, quiz_description, quiz_id]);
+                res.json(quiz.rows);
+            } catch(e) {console.log(e, "ERROR--")}
+        }
     //
+    //adminSlice
+    async updateSubCategoryForQuiz(req, res) {
+        const {sub_id, sub_name} = req.body;
+        
+        try{
+            console.log(req.body);
+            console.log('async PUTSUB work');
+            
+            const subCategory = await pool.query (`
+            UPDATE sub_categories
+            SET  sub_name = $1
+            WHERE sub_id = $2  RETURNING *                 
+            `, [sub_name, sub_id]);
+            res.json(subCategory.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+        //adminSlice
+        async updateCategoryForQuiz(req, res) {
+            const {main_id, main_name} = req.body;
+            
+            try{
+                console.log(req.body);
+                console.log('async PUTCAT work');
+                
+                const category = await pool.query (`
+                UPDATE main_categories
+                SET  main_name = $1
+                WHERE main_id = $2  RETURNING *                 
+                `, [main_name, main_id]);
+                res.json(category.rows);
+            } catch(e) {console.log(e, "ERROR--")}
+        }
+//
     async deleteAnswerForQuiz(req, res) {
         
     }

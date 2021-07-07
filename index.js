@@ -6,15 +6,20 @@ const quizIdRouter = require('./routes/quiz_id_routes')
 
 const usersRouter = require('./routes/users_routes');
 const categoryRouter = require('./routes/category_routes');
+const categoryIdRouterUpdate = require('./routes/category_id_routes_update');
 
 const subcategoryRouter = require('./routes/subcategory_routes');
 const subcategoryIdRouter = require('./routes/subcategory_id_routes');
+const subcategoryIdRouterUpdate = require('./routes/subcategory_id_routes_update');
 
 const questionRouter = require('./routes/question_routes');
 const answerRouter = require('./routes/answer_routes');
 
 const answerIdRouter = require('./routes/answer_id_routes');
 const answerIdRouterUpdate = require('./routes/answer_id_routes_update');
+const questionIdRouterUpdate = require('./routes/question_id_routes_update');
+const quizIdRouterUpdate = require('./routes/quiz_id_routes_update');
+
 const answerIdForQuestionRouter = require('./routes/answerForQuestion_id_routes');
 const questionIdRouter = require('./routes/question_id_routes');
 /*
@@ -47,11 +52,14 @@ app.use('/api/users', usersRouter);
 app.use(express.json());
 app.use('/api/quizes',quizRouter);
 app.use('/api/quizes/',quizIdRouter);
+app.use('/api/quizupdate/',quizIdRouterUpdate);
 
 app.use('/api/category',categoryRouter);
+app.use('/api/categoryupdate/',categoryIdRouterUpdate);
 
 app.use('/api/subcategory',subcategoryRouter);
 app.use('/api/subcategory/',subcategoryIdRouter);
+app.use('/api/subcategoryupdate/',subcategoryIdRouterUpdate);
 
 app.use('/api/question',questionRouter);
 app.use('/api/answer',answerRouter);
@@ -67,8 +75,9 @@ app.put('/api/answerupdate/:id',(req, res, next) => {
 
 app.use('/api/answer/',answerIdRouter);
 app.use('/api/answerforquestion/',answerIdForQuestionRouter);
-app.use('/api/question',questionIdRouter);
 
+app.use('/api/question',questionIdRouter);
+app.use('/api/questionupdate',questionIdRouterUpdate);
 //USERS
 app.use('/api/users',usersRouter);
 
