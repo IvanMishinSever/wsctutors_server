@@ -9,6 +9,6 @@ const categoryIdControllers = require('../controller/quizes_controllers_main.js'
 
 const categoryIdRouterCreate = express.Router();
 
-categoryIdRouterCreate.put('/',categoryIdControllers.createCategoryForQuiz);
+categoryIdRouterCreate.post('/',categoryIdControllers.createCategoryForQuiz);
 
 module.exports = categoryIdRouterCreate;
