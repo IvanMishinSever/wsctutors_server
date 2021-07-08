@@ -89,8 +89,8 @@ class Quiz_controllers {
             res.json(question.rows);
         } catch(e) {console.log(e, "ERROR--")}
     }
-        //adminSlice
-        async updateQuizForQuiz(req, res) {
+    //adminSlice
+    async updateQuizForQuiz(req, res) {
             const {quiz_id, quiz_name, quiz_description} = req.body;
             
             try{
@@ -123,8 +123,8 @@ class Quiz_controllers {
             res.json(subCategory.rows);
         } catch(e) {console.log(e, "ERROR--")}
     }
-        //adminSlice
-        async updateCategoryForQuiz(req, res) {
+    //adminSlice
+    async updateCategoryForQuiz(req, res) {
             const {main_id, main_name} = req.body;
             
             try{
@@ -139,9 +139,35 @@ class Quiz_controllers {
                 res.json(category.rows);
             } catch(e) {console.log(e, "ERROR--")}
         }
-//
-    async deleteAnswerForQuiz(req, res) {
+         //adminSlice
+    async createCategoryForQuiz(req, res) {
+        const {main_id, main_name} = req.body;
         
+        try{
+            console.log(req.body);
+            console.log('async POSTCAT work');
+            
+            const category = await pool.query (`
+            INSERT INTO main_categories
+            (main_id, main_name) values ($1, $2) RETURNING *                 
+            `, [main_id, main_name]);
+            res.json(category.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }   
+//
+    async deleteCategoryForQuiz(req, res) {
+        const id = req.params.id;
+        
+        try{
+            console.log(req.body);
+            console.log('async DELETECAT work');
+            
+            const category = await pool.query (`
+            DELETE FROM main_categories
+            WHERE main_id = $1                 
+            `, [id]);
+            res.json(category.rows);
+        } catch(e) {console.log(e, "ERROR--")}
     }
         //adminSlice
     async getIdAnswerForQuestion(req,res) {
@@ -228,7 +254,8 @@ class Quiz_controllers {
         
         const answer = await pool.query(`
         SELECT quiz_id AS id,
-        quiz_name AS text
+        quiz_name AS text,
+        quiz_description
         FROM quizes
         WHERE sub_id =  $1
         `,[id]);

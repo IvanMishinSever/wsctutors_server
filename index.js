@@ -7,6 +7,7 @@ const quizIdRouter = require('./routes/quiz_id_routes')
 const usersRouter = require('./routes/users_routes');
 const categoryRouter = require('./routes/category_routes');
 const categoryIdRouterUpdate = require('./routes/category_id_routes_update');
+const categoryIdRouterCreate = require('./routes/category_id_routes_create');
 
 const subcategoryRouter = require('./routes/subcategory_routes');
 const subcategoryIdRouter = require('./routes/subcategory_id_routes');
@@ -56,6 +57,7 @@ app.use('/api/quizupdate/',quizIdRouterUpdate);
 
 app.use('/api/category',categoryRouter);
 app.use('/api/categoryupdate/',categoryIdRouterUpdate);
+app.use('/api/category/',categoryIdRouterCreate);
 
 app.use('/api/subcategory',subcategoryRouter);
 app.use('/api/subcategory/',subcategoryIdRouter);
