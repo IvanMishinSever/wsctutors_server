@@ -2,7 +2,9 @@
 const express = require('express');
 const app = express();
 const quizRouter = require('./routes/quiz_routes');
-const quizIdRouter = require('./routes/quiz_id_routes')
+const quizIdRouter = require('./routes/quiz_id_routes');
+const quizIdRouterCreate = require('./routes/quiz_id_routes_create')
+const quizIdRouterDelete = require('./routes/quiz_id_routes_delete')
 
 const usersRouter = require('./routes/users_routes');
 const categoryRouter = require('./routes/category_routes');
@@ -13,6 +15,8 @@ const categoryIdRouterDelete = require('./routes/category_id_routes_delete');
 const subcategoryRouter = require('./routes/subcategory_routes');
 const subcategoryIdRouter = require('./routes/subcategory_id_routes');
 const subcategoryIdRouterUpdate = require('./routes/subcategory_id_routes_update');
+const subcategoryIdRouterCreate = require('./routes/subcategory_id_routes_create');
+const subcategoryIdRouterDelete = require('./routes/subcategory_id_routes_delete');
 
 const questionRouter = require('./routes/question_routes');
 const answerRouter = require('./routes/answer_routes');
@@ -55,6 +59,8 @@ app.use(express.json());
 app.use('/api/quizes',quizRouter);
 app.use('/api/quizes/',quizIdRouter);
 app.use('/api/quizupdate/',quizIdRouterUpdate);
+app.use('/api/quizes/',quizIdRouterCreate);
+app.use('/api/quizes/',quizIdRouterDelete);
 
 app.use('/api/category',categoryRouter);
 app.use('/api/categoryupdate/',categoryIdRouterUpdate);
@@ -64,6 +70,8 @@ app.use('/api/category/',categoryIdRouterDelete);
 app.use('/api/subcategory',subcategoryRouter);
 app.use('/api/subcategory/',subcategoryIdRouter);
 app.use('/api/subcategoryupdate/',subcategoryIdRouterUpdate);
+app.use('/api/subcategory/',subcategoryIdRouterCreate);
+app.use('/api/subcategory/',subcategoryIdRouterDelete);
 
 app.use('/api/question',questionRouter);
 app.use('/api/answer',answerRouter);

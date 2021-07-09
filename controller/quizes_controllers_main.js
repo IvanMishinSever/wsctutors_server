@@ -106,7 +106,36 @@ class Quiz_controllers {
                 res.json(quiz.rows);
             } catch(e) {console.log(e, "ERROR--")}
         }
-    //
+    //adminSlice
+    async createQuizForQuiz(req, res) {
+        const { quiz_name, quiz_description, sub_id } = req.body;
+        
+        try{
+            console.log(req.body);
+            console.log('async POST QUIZ work');
+            
+            const quiz = await pool.query (`
+            INSERT INTO quizes
+            ( quiz_name, quiz_description, sub_id) values ($1, $2, $3) RETURNING *                 
+            `, [quiz_name, quiz_description, sub_id]);
+            res.json(quiz.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+        //adminSlice
+    async deleteQuizForQuiz(req, res) {
+        const id = req.params.id;
+        
+        try{
+            console.log(req.body);
+            console.log('async DELETE QUIZ work');
+            
+            const quiz = await pool.query (`
+            DELETE FROM quizes
+            WHERE quiz_id = $1                 
+            `, [id]);
+            res.json(quiz.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
     //adminSlice
     async updateSubCategoryForQuiz(req, res) {
         const {sub_id, sub_name} = req.body;
@@ -121,6 +150,36 @@ class Quiz_controllers {
             WHERE sub_id = $2  RETURNING *                 
             `, [sub_name, sub_id]);
             res.json(subCategory.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+    //adminSlice
+    async createSubCategoryForQuiz(req, res) {
+        const { sub_name, main_id } = req.body;
+        
+        try{
+            console.log(req.body);
+            console.log('async POST SUBCAT work');
+            
+            const category = await pool.query (`
+            INSERT INTO sub_categories
+            (sub_name, main_id) values ($1, $2) RETURNING *                 
+            `, [sub_name, main_id]);
+            res.json(category.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+    //adminSlice
+    async deleteSubCategoryForQuiz(req, res) {
+        const id = req.params.id;
+        
+        try{
+            console.log(req.body);
+            console.log('async DELETE SUBCAT work');
+            
+            const subcategory = await pool.query (`
+            DELETE FROM sub_categories
+            WHERE sub_id = $1                 
+            `, [id]);
+            res.json(subcategory.rows);
         } catch(e) {console.log(e, "ERROR--")}
     }
     //adminSlice
