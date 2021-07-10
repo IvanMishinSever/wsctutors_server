@@ -75,7 +75,7 @@ class Quiz_controllers {
     }
         //adminSlice
     async createAnswerForQuiz(req, res) {
-        const { answer_content, answer_feedback, answer_value, question_id } = req.body;
+        const { answer_content, answer_feedback, answer_value, question_id, quiz_id } = req.body;
         
         try{
             console.log(req.body);
@@ -83,8 +83,8 @@ class Quiz_controllers {
             
             const answer = await pool.query (`
             INSERT INTO answers_item
-            (answer_content, answer_feedback, answer_value, question_id ) values ($1, $2, $3, $4) RETURNING *                 
-            `, [answer_content, answer_feedback, answer_value, question_id]);
+            (answer_content, answer_feedback, answer_value, question_id, quiz_id ) values ($1, $2, $3, $4, $5) RETURNING *                 
+            `, [answer_content, answer_feedback, answer_value, question_id, quiz_id]);
             res.json(answer.rows);
         } catch(e) {console.log(e, "ERROR--")}
     }
