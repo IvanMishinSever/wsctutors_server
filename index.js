@@ -28,6 +28,8 @@ const answerRouter = require('./routes/answer_routes');
 
 const answerIdRouter = require('./routes/answer_id_routes');
 const answerIdRouterUpdate = require('./routes/answer_id_routes_update');
+const answerIdRouterCreate = require('./routes/answer_id_routes_create');
+const answerIdRouterDelete = require('./routes/answer_id_routes_delete');
 
 
 
@@ -81,14 +83,10 @@ app.use('/api/subcategory/',subcategoryIdRouterDelete);
 app.use('/api/question',questionRouter);
 app.use('/api/answer',answerRouter);
 
-app.use('/api/answerupdate/',answerIdRouterUpdate)
-/*
-app.put('/api/answerupdate/:id',(req, res, next) => {
-    const answers = req.body;
-    console.log(answers);
-    res.send("jr");
-})
-*/
+app.use('/api/answerupdate/',answerIdRouterUpdate);
+app.use('/api/answer/',answerIdRouterCreate);
+app.use('/api/answer/',answerIdRouterDelete);
+
 
 app.use('/api/answer/',answerIdRouter);
 app.use('/api/answerforquestion/',answerIdForQuestionRouter);

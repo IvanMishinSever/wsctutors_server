@@ -73,6 +73,36 @@ class Quiz_controllers {
             res.json(answer.rows);
         } catch(e) {console.log(e, "ERROR--")}
     }
+        //adminSlice
+    async createAnswerForQuiz(req, res) {
+        const { answer_content, answer_feedback, answer_value, question_id } = req.body;
+        
+        try{
+            console.log(req.body);
+            console.log('async POST ANSWER work');
+            
+            const answer = await pool.query (`
+            INSERT INTO answers_item
+            (answer_content, answer_feedback, answer_value, question_id ) values ($1, $2, $3, $4) RETURNING *                 
+            `, [answer_content, answer_feedback, answer_value, question_id]);
+            res.json(answer.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
+        //adminSlice
+    async deleteAnswerForQuiz(req, res) {
+        const id = req.params.id;
+        
+        try{
+            console.log(req.body);
+            console.log('async DELETE ANSWER work');
+            
+            const answer = await pool.query (`
+            DELETE FROM answers_item
+            WHERE answer_id = $1                 
+            `, [id]);
+            res.json(answer.rows);
+        } catch(e) {console.log(e, "ERROR--")}
+    }
     //adminSlice
     async updateQuestionForQuiz(req, res) {
         const {question_id, question_content} = req.body;
@@ -120,9 +150,9 @@ class Quiz_controllers {
                 `, [quiz_name, quiz_description, quiz_id]);
                 res.json(quiz.rows);
             } catch(e) {console.log(e, "ERROR--")}
-        }
+    }
         //adminSlice
-        async deleteQuestionForQuiz(req, res) {
+    async deleteQuestionForQuiz(req, res) {
             const id = req.params.id;
             
             try{
