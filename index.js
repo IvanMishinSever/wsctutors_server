@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const quizRouter = require('./routes/quiz_routes');
 const quizIdRouter = require('./routes/quiz_id_routes');
+const quizIdRouterUpdate = require('./routes/quiz_id_routes_update');
 const quizIdRouterCreate = require('./routes/quiz_id_routes_create')
 const quizIdRouterDelete = require('./routes/quiz_id_routes_delete')
 
@@ -19,12 +20,16 @@ const subcategoryIdRouterCreate = require('./routes/subcategory_id_routes_create
 const subcategoryIdRouterDelete = require('./routes/subcategory_id_routes_delete');
 
 const questionRouter = require('./routes/question_routes');
+const questionIdRouterUpdate = require('./routes/question_id_routes_update');
+const questionIdRouterCreate = require('./routes/question_id_routes_create');
+const questionIdRouterDelete = require('./routes/question_id_routes_delete');
+
 const answerRouter = require('./routes/answer_routes');
 
 const answerIdRouter = require('./routes/answer_id_routes');
 const answerIdRouterUpdate = require('./routes/answer_id_routes_update');
-const questionIdRouterUpdate = require('./routes/question_id_routes_update');
-const quizIdRouterUpdate = require('./routes/quiz_id_routes_update');
+
+
 
 const answerIdForQuestionRouter = require('./routes/answerForQuestion_id_routes');
 const questionIdRouter = require('./routes/question_id_routes');
@@ -90,6 +95,8 @@ app.use('/api/answerforquestion/',answerIdForQuestionRouter);
 
 app.use('/api/question',questionIdRouter);
 app.use('/api/questionupdate',questionIdRouterUpdate);
+app.use('/api/question',questionIdRouterCreate);
+app.use('/api/question',questionIdRouterDelete);
 //USERS
 app.use('/api/users',usersRouter);
 
