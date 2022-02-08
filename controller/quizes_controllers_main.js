@@ -3,10 +3,11 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
     user: "postgres",
-    password: "Book2021",
+   // password: "Book2021",
+   password: "root1987",
     host: "localhost",
     port: 5432,
-    database: "quizStore"
+    database: "wscad"
 }, err => {
     if (err) {
         console.log(err);
@@ -349,7 +350,7 @@ class Quiz_controllers {
         try{
             let id = req.params.id;
             console.log(id);
-        console.log('async getQ work');
+        console.log('async getQ work!!');
         
         const answer = await pool.query(`
         SELECT sub_id AS id,
@@ -422,7 +423,7 @@ class Quiz_controllers {
     //menuSideSlice  adminSlice
     async getCategory(req,res) {
         try{
-        console.log('async getCategory work');
+        console.log('async getCategory work!!!');
         const users = await pool.query(`
         SELECT main_id AS id
         ,main_name AS label 
