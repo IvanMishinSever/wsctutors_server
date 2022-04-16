@@ -3,7 +3,7 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
     user: "postgres",
-    password: "Book2021",
+    password: "root1987",
     host: "localhost",
     port: 5432,
     database: "quizStore"
@@ -19,7 +19,7 @@ class User_controllers {
 
     async getUsers(req,res) {
         try{
-        console.log('async getQ work');
+        console.log('async getQ users work');
         const users = await pool.query(`
         SELECT users.id, users.nickname, users.mail, users.password, users.city, occupation.occupation_kind, subscription.subscription_kind
         FROM users
