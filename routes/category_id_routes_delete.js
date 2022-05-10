@@ -3,7 +3,7 @@
 const express = require('express');
 
 
-const categoryIdControllers = require('../controller/quizes_controllers_main.js');
+const categoryIdControllers = require('../controllers/quizes_controllers_main.js');
 
 
 

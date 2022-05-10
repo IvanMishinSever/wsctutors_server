@@ -2,7 +2,7 @@
 //const router = new Router();
 const express = require('express');
 
-const subcategoryIdControllers = require('../controller/quizes_controllers_main.js');
+const subcategoryIdControllers = require('../controllers/quizes_controllers_main.js');
 
 //router.get = ('/',quizControllers.getQuizes);
 

@@ -13,7 +13,7 @@ module.exports = subcategoryRouter;
 */
 
 
-const subcategoryControllers = require('../controller/quizes_controllers_main.js');
+const subcategoryControllers = require('../controllers/quizes_controllers_main.js');
 
 //router.get = ('/',quizControllers.getQuizes);
 const subcategoryRouter = express.Router();
