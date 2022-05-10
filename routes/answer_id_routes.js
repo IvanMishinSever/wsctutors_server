@@ -14,7 +14,7 @@ module.exports = answerIdRouter;
 */
 
 
-const answerIdControllers = require('../controller/quizes_controllers_main.js');
+const answerIdControllers = require('../controllers/quizes_controllers_main.js');
 
 //router.get = ('/',quizControllers.getQuizes);
 

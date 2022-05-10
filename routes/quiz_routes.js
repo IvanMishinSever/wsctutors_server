@@ -2,7 +2,7 @@
 //const router = new Router();
 const express = require('express');
 
-const quizControllers = require('../controller/quizes_controllers_main.js');
+const quizControllers = require('../controllers/quizes_controllers_main.js');
 
 //router.get = ('/',quizControllers.getQuizes);
 
