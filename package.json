@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "D": "^1.0.0",
     "config": "^3.3.4",
     "express": "^4.17.1",
@@ -17,5 +18,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
+=======
+    "config": "^3.3.7",
+    "express": "^4.17.2",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+>>>>>>> origin/newcomp_server
   }
 }

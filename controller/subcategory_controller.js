@@ -3,11 +3,18 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
     user: "postgres",
+<<<<<<< HEAD
     //password: "Book2021",
     password: "root1987",
     host: "localhost",
     port: 5432,
     database: "wscad"
+=======
+    password: "Book2021",
+    host: "localhost",
+    port: 5432,
+    database: "quizStore"
+>>>>>>> origin/newcomp_server
 }, err => {
     if (err) {
         console.log(err);
