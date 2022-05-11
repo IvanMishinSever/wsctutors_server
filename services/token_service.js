@@ -10,7 +10,7 @@ const pool = new Pool({
     password: "root1987",
     host: "localhost",
     port: 5432,
-    database: "jwtproject"
+    database: "quizStore"
 }, err => {
     if (err) {
         console.log(err);

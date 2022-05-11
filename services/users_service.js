@@ -6,7 +6,7 @@ const pool = new Pool({
     password: "root1987",
     host: "localhost",
     port: 5432,
-    database: "jwtproject"
+    database: "quizStore"
 }, err => {
     if (err) {
         console.log(err);
@@ -78,7 +78,7 @@ async registerUsers(useremail, user_password) {
         //console.log(userDto);
         const tokens = tokenService.generateTokens({...userDto});
         //console.log(tokens);
-        //console.log(userDto.id +" " + tokens.refreshToken);
+        console.log(userDto.id +" " + tokens.refreshToken);
         await tokenService.saveToken(userDto.id, tokens.refreshToken);
         return {...tokens, user: userDto}
 
