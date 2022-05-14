@@ -62,7 +62,14 @@ async registerUsers(useremail, user_password) {
         VALUES ($1, $2, $3)
         `, [useremail, hashPassword, activationLink]);
 
-        const getnewUser = await pool.query(`SELECT * FROM users WHERE useremail = $1`, 
+        const getnewUser = await pool.query(`
+        SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, subscription.subscription_kind, occupation.occupation_kind 
+        FROM users
+        JOIN subscription 
+        ON users.id_subscription=subscription.id
+        JOIN occupation
+        ON users.id_occupation=occupation.id
+        WHERE useremail = $1`, 
         [useremail]);
        // console.log(getnewUser.rows[0].id);
         //console.log(newUser);
