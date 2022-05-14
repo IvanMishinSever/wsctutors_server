@@ -119,13 +119,15 @@ async activate(activationLink) {
 //LOGIN
 async login(useremail, user_password) {
     const user = await pool.query(`
-    SELECT * FROM users 
+    SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, subscription.subscription_kind, occupation.occupation_kind 
+    FROM users
     JOIN subscription 
 	ON users.id_subscription=subscription.id
 	JOIN occupation
 	ON users.id_occupation=occupation.id
     WHERE useremail = $1
     `,[useremail]);
+    console.log(user.rows[0]);
     //console.log(user);
     if (user.rows.length === 0) {
        throw ApiError.BedRequestUserNotFound(`User with the email ${useremail}  is NOT found!`);
@@ -185,7 +187,7 @@ async refresh(refreshToken) {
     console.log('start refresh service');
     const  userData = tokenService.validateRefreshToken(refreshToken);
     const tokenFromDb = await tokenService.findToken(refreshToken); 
-    console.log(userData);
+    console.log('refresh userDTO'+userData);
     console.log(tokenFromDb);
     if (userData) {
         console.log("VALID REFRESH TOKEN OK");;
@@ -202,9 +204,17 @@ async refresh(refreshToken) {
 
 
     const user = await pool.query(`
-    SELECT * FROM users WHERE id = $1
+    SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, subscription.subscription_kind, occupation.occupation_kind 
+    FROM users
+    JOIN subscription 
+	ON users.id_subscription=subscription.id
+	JOIN occupation
+	ON users.id_occupation=occupation.id
+    WHERE users.id = $1
     `,[userData.id]);
+    console.log(userData.id);
     const userDto = new UserDto(user.rows[0]);
+    console.log(user.rows[0]);
     const tokens = tokenService.generateTokens({...userDto});
     //console.log(tokens);
     //console.log(userDto.id +" " + tokens.refreshToken);
