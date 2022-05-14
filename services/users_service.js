@@ -72,7 +72,7 @@ async registerUsers(useremail, user_password) {
         //
         
        //отключил почту НИЖЕ 
-        await mailService.sendActivationMail(useremail, `${url}/api/auth/activate/${activationLink}`);
+        //await mailService.sendActivationMail(useremail, `${url}/api/auth/activate/${activationLink}`);
 
         const userDto = new UserDto(getnewUser.rows[0]);
         //console.log(userDto);
@@ -119,7 +119,12 @@ async activate(activationLink) {
 //LOGIN
 async login(useremail, user_password) {
     const user = await pool.query(`
-    SELECT * FROM users WHERE useremail = $1
+    SELECT * FROM users 
+    JOIN subscription 
+	ON users.id_subscription=subscription.id
+	JOIN occupation
+	ON users.id_occupation=occupation.id
+    WHERE useremail = $1
     `,[useremail]);
     //console.log(user);
     if (user.rows.length === 0) {
@@ -135,7 +140,7 @@ async login(useremail, user_password) {
      //
      console.log(user.rows[0]);
      const userDto = new UserDto(user.rows[0]);
-     console.log(userDto);
+     console.log('userDTO CREATEAD' + userDto);
      const tokens = tokenService.generateTokens({...userDto});
      //console.log(tokens);
      //console.log(userDto.id +" " + tokens.refreshToken);

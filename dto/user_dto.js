@@ -26,7 +26,7 @@ module.exports = class UserDto {
         this.id = model.id;  // must be change(like mongo db)
         this.isActivated =model.is_activated;
         this.username = model.username;
-        this.occupation = model.id_occupation;
-        this. subscription = model.id_subscription;
+        this.occupation = model.occupation_kind;
+        this. subscription = model.subscription_kind;
     }
 }
