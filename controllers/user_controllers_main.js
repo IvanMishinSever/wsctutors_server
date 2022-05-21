@@ -20,18 +20,22 @@ const pool = new Pool({
 class User_controllers {
 
     async getUsers(req,res) {
+        console.log(req.body);
         try{
 
         console.log('async getQ users work');
-r
+
         const users = await pool.query(`
-        SELECT users.id, users.nickname, users.mail, users.password, users.city, occupation.occupation_kind, subscription.subscription_kind
+        SELECT users.id, users.username, users.useremail, subscription.subscription_kind, occupation.occupation_kind
         FROM users
         JOIN occupation
         ON users.id_occupation = occupation.id
         JOIN subscription
         ON users.id_subscription = subscription.id`);
+        
+
         res.json(users.rows);
+        console.log(users.rows);
         } catch (e) {
             console.log(e, "ERROR--")
         }

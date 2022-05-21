@@ -150,6 +150,7 @@ app.use("/api/auth", logoutRouter);
 app.use("/api/auth", activateRouter);
 app.use("/api/auth", refreshRouter);
 app.use("/api/users",authMiddleware, usersRouter);
+//app.use("/api/users",usersRouter);
 
 app.get('/set-cookie', (req, res) => {
   res.cookie('token', '12345ABCDE')

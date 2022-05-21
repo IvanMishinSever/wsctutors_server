@@ -20,6 +20,9 @@ module.exports = function(req, res, next) {
            return  next(ApiError.UnauthorisedError());
         }
         const userData = tokenService.validateAccessToken(accessToken);
+        if (userData) {
+            console.log('GOOD VALID ACCESS TOKEN');
+        }
         if (!userData) {
             console.log('no userData');
             return next(ApiError.UnauthorisedError());
