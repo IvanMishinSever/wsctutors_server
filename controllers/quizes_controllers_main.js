@@ -441,7 +441,6 @@ class Quiz_controllers {
         }
     }
 
-
 }
 
 

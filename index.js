@@ -23,6 +23,10 @@ const quizIdRouterCreate = require('./routes/quiz_id_routes_create')
 const quizIdRouterDelete = require('./routes/quiz_id_routes_delete')
 
 const usersRouter = require('./routes/users_routes');
+//PRIVATE ACCOUNT
+const updateUserRouter = require('./routes/account_routes_update');
+
+
 const categoryRouter = require('./routes/category_routes');
 const categoryIdRouterUpdate = require('./routes/category_id_routes_update');
 const categoryIdRouterCreate = require('./routes/category_id_routes_create');
@@ -50,6 +54,13 @@ const answerIdRouterDelete = require('./routes/answer_id_routes_delete');
 
 const answerIdForQuestionRouter = require('./routes/answerForQuestion_id_routes');
 const questionIdRouter = require('./routes/question_id_routes');
+
+//PRIVATE ACCOUNT
+//const userRouterUpdate = require('./routes/user_routes_update');
+
+
+
+//
 /*
 const answerIdControllers = require('./controller/quizes_controllers_main');
 const answerIdRouterUpdate = express.Router();
@@ -131,9 +142,15 @@ app.use('/api/question',questionIdRouter);
 app.use('/api/questionupdate',questionIdRouterUpdate);
 app.use('/api/question',questionIdRouterCreate);
 app.use('/api/question',questionIdRouterDelete);
-//USERS
-app.use('/api/users',usersRouter);
 
+
+//USERS
+//app.use('/api/users',usersRouter);
+app.use("/api/users",authMiddleware, usersRouter);
+
+
+//PRIVATE ACCOUNT
+app.use('/api/updateuser/',updateUserRouter);
 
 //check servernpm
 /*
@@ -149,7 +166,10 @@ app.use("/api/auth", loginRouter);
 app.use("/api/auth", logoutRouter);
 app.use("/api/auth", activateRouter);
 app.use("/api/auth", refreshRouter);
-app.use("/api/users",authMiddleware, usersRouter);
+
+
+
+
 //app.use("/api/users",usersRouter);
 
 app.get('/set-cookie', (req, res) => {

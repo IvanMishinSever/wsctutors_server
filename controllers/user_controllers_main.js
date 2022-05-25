@@ -26,7 +26,7 @@ class User_controllers {
         console.log('async getQ users work');
 
         const users = await pool.query(`
-        SELECT users.id, users.username, users.useremail, subscription.subscription_kind, occupation.occupation_kind
+        SELECT users.id, users.username, users.usercountry, users.useremail, subscription.subscription_kind, occupation.occupation_kind
         FROM users
         JOIN occupation
         ON users.id_occupation = occupation.id

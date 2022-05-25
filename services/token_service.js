@@ -27,11 +27,12 @@ const pool = new Pool({
 //
 class TokenService {
     generateTokens(payload) {
-        const accessToken = jwt.sign(payload, jwrAs, {expiresIn:'40s'}); //LIFE TOKENS
+        const accessToken = jwt.sign(payload, jwrAs, {expiresIn:'1d'}); //LIFE TOKENS
         const refreshToken = jwt.sign(payload, jwrRs, {expiresIn:'30d'});
         return {
             accessToken,
             refreshToken
+
         }
     }
     //checking token for existing at the userId- if user has already logged
