@@ -21,12 +21,14 @@ module.exports = class UserDto {
     username;
     occupation;
     subscription;
+    usercountry;
     constructor(model) {
         this.useremail =model.useremail;
         this.id = model.id;  // must be change(like mongo db)
         this.isActivated =model.is_activated;
         this.username = model.username;
         this.occupation = model.occupation_kind;
-        this. subscription = model.subscription_kind;
+        this.subscription = model.subscription_kind;
+        this.usercountry = model.usercountry;
     }
 }

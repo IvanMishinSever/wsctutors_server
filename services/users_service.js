@@ -126,7 +126,8 @@ async activate(activationLink) {
 //LOGIN
 async login(useremail, user_password) {
     const user = await pool.query(`
-    SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, subscription.subscription_kind, occupation.occupation_kind 
+    SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, subscription.subscription_kind, 
+    occupation.occupation_kind, users.usercountry, users.id_occupation
     FROM users
     JOIN subscription 
 	ON users.id_subscription=subscription.id
@@ -211,7 +212,8 @@ async refresh(refreshToken) {
 
 
     const user = await pool.query(`
-    SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, subscription.subscription_kind, occupation.occupation_kind 
+    SELECT  users.id, users.useremail, users.username, users.user_password, users.is_activated, 
+    subscription.subscription_kind, occupation.occupation_kind, users.usercountry  
     FROM users
     JOIN subscription 
 	ON users.id_subscription=subscription.id

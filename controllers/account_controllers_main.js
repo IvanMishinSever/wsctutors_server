@@ -29,10 +29,10 @@ class Account_controllers {
             const account = await pool.query (`
             UPDATE users
             SET  username=$1,  id_occupation=$2,  usercountry=$3
-            WHERE id = $4  RETURNING *                 
+            WHERE id = $4  RETURNING username, usercountry, id_occupation               
             `, [username, id_occupation, usercountry, id ]);
-            //res.json(account.rows);
-            res.json("update good");
+            res.json(account.rows);
+           // res.json("update good");
         } catch(e) {console.log(e, "ERROR--")}
     }
 
